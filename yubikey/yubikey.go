@@ -3,12 +3,14 @@ package yubikey
 import (
 	"encoding/hex"
 	"github.com/conformal/yubikey"
+	"log"
 )
 
 type Validator struct {
 	Passcode string         `json:"passcode"`
 	Secret   string         `json:"Secret"`
 	Counter  uint64         `json:"counter"`
+	Session  uint64         `json:"session"`
 	Token    *yubikey.Token `json:"token"`
 }
 
@@ -21,9 +23,15 @@ func (v *Validator) Validate() bool {
 	if err != nil {
 		return false
 	}
-	if uint64(v.Token.Use) < v.Counter {
+	log.Printf("%+v", v.Token)
+	log.Print(v.Token.Use, v.Counter)
+
+	if v.Token.Ctr < uint16(v.Counter) {
+		return false
+	} else if v.Token.Ctr == uint16(v.Counter) && v.Token.Use <= uint8(v.Session) {
 		return false
 	}
+
 	return true
 }
 
