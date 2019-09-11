@@ -6,19 +6,18 @@ import (
 )
 
 type Validator struct {
-	Passcode string         `json:"passcode"`
-	Secret   string         `json:"Secret"`
-	Counter  uint64         `json:"counter"`
-	Use      uint64         `json:"use"`
-	Token    *yubikey.Token `json:"token"`
+	Secret  string
+	Counter uint64
+	Use     uint64
+	Token   *yubikey.Token
 }
 
-func (v *Validator) Validate() bool {
+func (v *Validator) Validate(passcode string) bool {
 	secretKey, err := v.getSecretKey(v.Secret)
 	if err != nil {
 		return false
 	}
-	err = v.getToken(v.Passcode, secretKey)
+	err = v.getToken(passcode, secretKey)
 	if err != nil {
 		return false
 	}
@@ -53,4 +52,12 @@ func (v *Validator) getSecretKey(key string) (*yubikey.Key, error) {
 	priv := yubikey.NewKey(b)
 
 	return &priv, nil
+}
+
+func NewValidator(secret string, counter uint64, use uint64) *Validator {
+	return &Validator{
+		Secret:  secret,
+		Counter: counter,
+		Use:     use,
+	}
 }
