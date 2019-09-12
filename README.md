@@ -1,6 +1,6 @@
 # otp: One Time Password utilities Go / Golang
 
-[![GoDoc](https://godoc.org/github.com/pquerna/otp?status.svg)](https://godoc.org/github.com/pquerna/otp) [![Build Status](https://travis-ci.org/pquerna/otp.svg?branch=master)](https://travis-ci.org/pquerna/otp)
+[![GoDoc](https://godoc.org/github.com/nilinside/otp?status.svg)](https://godoc.org/github.com/nilinside/otp) [![Build Status](https://travis-ci.org/nilinside/otp.svg?branch=master)](https://travis-ci.org/nilinside/otp)
 
 # Why One Time Passwords?
 
@@ -68,7 +68,7 @@ https://help.github.com/articles/downloading-your-two-factor-authentication-reco
 
 ## Improvements, bugs, adding feature, etc:
 
-Please [open issues in Github](https://github.com/pquerna/otp/issues) for ideas, bugs, and general thoughts.  Pull requests are of course preferred :)
+Please [open issues in Github](https://github.com/nilinside/otp/issues) for ideas, bugs, and general thoughts.  Pull requests are of course preferred :)
 
 ## License
 

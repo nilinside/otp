@@ -18,8 +18,8 @@
 package totp
 
 import (
-	"github.com/pquerna/otp"
-	"github.com/pquerna/otp/hotp"
+	"github.com/nilinside/otp"
+	"github.com/nilinside/otp/hotp"
 
 	"crypto/rand"
 	"encoding/base32"
